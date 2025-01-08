@@ -85,87 +85,192 @@
             margin: 0;
         }
 
+        #error-message {
+            color: red;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
     </style>
 </head>
 <body>
-    <header>
-        <h1>图书管理系统</h1>
-    </header>
+<header>
+    <h1>图书管理系统</h1>
+</header>
 
-    <div class="container" th:if="${page == 'login'}">
-        <h2>用户登录</h2>
-        <form th:action="@{/login}" method="post">
-            <div class="form-group">
-                <label for="username">用户名：</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-
-            <div class="form-group">
-                <label for="password">密码：</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-
-            <button type="submit">登录</button>
-        </form>
-
-        <p>没有账号？<a th:href="@{/register}">注册</a></p>
-    </div>
-
-    <div class="container" th:if="${page == 'register'}">
-        <h2>用户注册</h2>
-        <form th:action="@{/register}" method="post">
-            <div class="form-group">
-                <label for="username">用户名：</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-
-            <div class="form-group">
-                <label for="password">密码：</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-
-            <button type="submit">注册</button>
-        </form>
-
-        <p>已有账号？<a th:href="@{/login}">登录</a></p>
-    </div>
-
-    <div class="container" th:if="${page == 'main'}">
-        <h2>添加书籍</h2>
-        <form th:action="@{/books}" method="post">
-            <div class="form-group">
-                <label for="title">书名：</label>
-                <input type="text" id="title" name="title" required>
-            </div>
-
-            <div class="form-group">
-                <label for="author">作者：</label>
-                <input type="text" id="author" name="author" required>
-            </div>
-
-            <div class="form-group">
-                <label for="year">出版年份：</label>
-                <input type="number" id="year" name="year" required>
-            </div>
-
-            <button type="submit">添加书籍</button>
-        </form>
-
-        <h2>查询书籍</h2>
-        <form th:action="@{/books/search}" method="get">
-            <div class="form-group">
-                <input type="text" id="search" name="query" placeholder="输入书名或作者进行搜索">
-            </div>
-            <button type="submit">搜索</button>
-        </form>
-
-        <div class="book-list">
-            <div class="book-item" th:each="book : ${books}">
-                <h3 th:text="${book.title}">书名</h3>
-                <p>作者：<span th:text="${book.author}">作者名</span></p>
-                <p>年份：<span th:text="${book.year}">年份</span></p>
-            </div>
+<div class="container" th:if="${page == 'login'}">
+    <h2>用户登录</h2>
+    <form id="login-form">
+        <div class="form-group">
+            <label for="username">用户名：</label>
+            <input type="text" id="username" name="username" required>
         </div>
+
+        <div class="form-group">
+            <label for="password">密码：</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <button type="button" onclick="login()">登录</button>
+    </form>
+
+    <p>没有账号？<a th:href="@{/register}">注册</a></p>
+</div>
+
+<div class="container" th:if="${page == 'register'}">
+    <h2>用户注册</h2>
+    <form id="register-form">
+        <div class="form-group">
+            <label for="username">用户名：</label>
+            <input type="text" id="username" name="username" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">密码：</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+
+        <button type="button" onclick="register()">注册</button>
+    </form>
+
+    <p>已有账号？<a th:href="@{/login}">登录</a></p>
+</div>
+
+<div class="container" th:if="${page == 'main'}">
+    <div id="error-message"></div>
+    <h2>添加书籍</h2>
+    <form id="add-book-form">
+        <div class="form-group">
+            <label for="title">书名：</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="author">作者：</label>
+            <input type="text" id="author" name="author" required>
+        </div>
+
+        <div class="form-group">
+            <label for="year">出版年份：</label>
+            <input type="number" id="year" name="year" required>
+        </div>
+
+        <button type="button" onclick="addBook()">添加书籍</button>
+    </form>
+
+    <h2>查询书籍</h2>
+    <form id="search-form">
+        <div class="form-group">
+            <input type="text" id="search" name="query" placeholder="输入书名或作者进行搜索">
+        </div>
+        <button type="button" onclick="searchBooks()">搜索</button>
+    </form>
+
+    <div class="book-list" id="book-list">
     </div>
+</div>
+
+<script>
+    async function fetchData(url, method = 'GET', body = null) {
+        try {
+            const response = await fetch(url, {
+                method,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: body ? JSON.stringify(body) : null,
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || '请求失败');
+            }
+
+            return await response.json();
+        } catch (error) {
+            showError(error.message);
+            return null;
+        }
+    }
+
+    function showError(message) {
+        const errorContainer = document.querySelector('#error-message');
+        errorContainer.textContent = message;
+        errorContainer.style.display = 'block';
+    }
+
+    async function login() {
+        const username = document.querySelector('#username').value;
+        const password = document.querySelector('#password').value;
+        const result = await fetchData('/api/login', 'POST', { username, password });
+
+        if (result) {
+            window.location.href = '/main';
+        }
+    }
+
+    async function register() {
+        const username = document.querySelector('#username').value;
+        const password = document.querySelector('#password').value;
+        const result = await fetchData('/api/register', 'POST', { username, password });
+
+        if (result) {
+            alert('注册成功，请登录');
+            window.location.href = '/login';
+        }
+    }
+
+    async function addBook() {
+        const title = document.querySelector('#title').value;
+        const author = document.querySelector('#author').value;
+        const year = document.querySelector('#year').value;
+        const result = await fetchData('/api/books', 'POST', { title, author, year });
+
+        if (result) {
+            alert('书籍添加成功');
+            window.location.reload();
+        }
+    }
+
+    async function searchBooks() {
+        const query = document.querySelector('#search').value;
+        const result = await fetchData(`/api/books/search?query=${query}`, 'GET');
+
+        if (result) {
+            const bookList = document.querySelector('#book-list');
+            bookList.innerHTML = '';
+            result.forEach(book => {
+                const bookItem = document.createElement('div');
+                bookItem.className = 'book-item';
+                bookItem.innerHTML = `
+                        <h3>${book.title}</h3>
+                        <p>作者：${book.author}</p>
+                        <p>年份：${book.year}</p>
+                    `;
+                bookList.appendChild(bookItem);
+            });
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        if (document.body.getAttribute('data-page') === 'main') {
+            const books = await fetchData('/api/books');
+            if (books) {
+                const bookList = document.querySelector('#book-list');
+                bookList.innerHTML = '';
+                books.forEach(book => {
+                    const bookItem = document.createElement('div');
+                    bookItem.className = 'book-item';
+                    bookItem.innerHTML = `
+                            <h3>${book.title}</h3>
+                            <p>作者：${book.author}</p>
+                            <p>年份：${book.year}</p>
+                        `;
+                    bookList.appendChild(bookItem);
+                });
+            }
+        }
+    });
+</script>
 </body>
 </html>

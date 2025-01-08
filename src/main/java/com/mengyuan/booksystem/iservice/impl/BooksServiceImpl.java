@@ -1,8 +1,8 @@
-package com.mengyuan.booksystem.service.impl;
+package com.mengyuan.booksystem.iservice.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mengyuan.booksystem.entity.Books;
-import com.mengyuan.booksystem.service.BooksService;
+import com.mengyuan.booksystem.iservice.BooksService;
 import com.mengyuan.booksystem.mapper.BooksMapper;
 import org.springframework.stereotype.Service;
 

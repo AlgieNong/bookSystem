@@ -1,4 +1,4 @@
-package com.mengyuan.booksystem.service;
+package com.mengyuan.booksystem.iservice;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mengyuan.booksystem.entity.Books;

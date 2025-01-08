@@ -10,3 +10,5 @@ spring:
       ddl-auto: update  # 根据需要选择策略（create, create-drop, validate, none）
 server:
   port: 8080
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*.xml
