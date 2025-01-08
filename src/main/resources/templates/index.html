@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书管理系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #6200ea;
+            color: white;
+            padding: 1rem 2rem;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1, h2 {
+            margin: 0 0 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #6200ea;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #3700b3;
+        }
+
+        .book-list {
+            margin-top: 2rem;
+        }
+
+        .book-item {
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            background: #fafafa;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .actions button {
+            width: auto;
+            margin: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>图书管理系统</h1>
+    </header>
+
+    <div class="container" th:if="${page == 'login'}">
+        <h2>用户登录</h2>
+        <form th:action="@{/login}" method="post">
+            <div class="form-group">
+                <label for="username">用户名：</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">密码：</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit">登录</button>
+        </form>
+
+        <p>没有账号？<a th:href="@{/register}">注册</a></p>
+    </div>
+
+    <div class="container" th:if="${page == 'register'}">
+        <h2>用户注册</h2>
+        <form th:action="@{/register}" method="post">
+            <div class="form-group">
+                <label for="username">用户名：</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">密码：</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit">注册</button>
+        </form>
+
+        <p>已有账号？<a th:href="@{/login}">登录</a></p>
+    </div>
+
+    <div class="container" th:if="${page == 'main'}">
+        <h2>添加书籍</h2>
+        <form th:action="@{/books}" method="post">
+            <div class="form-group">
+                <label for="title">书名：</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="author">作者：</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+
+            <div class="form-group">
+                <label for="year">出版年份：</label>
+                <input type="number" id="year" name="year" required>
+            </div>
+
+            <button type="submit">添加书籍</button>
+        </form>
+
+        <h2>查询书籍</h2>
+        <form th:action="@{/books/search}" method="get">
+            <div class="form-group">
+                <input type="text" id="search" name="query" placeholder="输入书名或作者进行搜索">
+            </div>
+            <button type="submit">搜索</button>
+        </form>
+
+        <div class="book-list">
+            <div class="book-item" th:each="book : ${books}">
+                <h3 th:text="${book.title}">书名</h3>
+                <p>作者：<span th:text="${book.author}">作者名</span></p>
+                <p>年份：<span th:text="${book.year}">年份</span></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: bookSystem
+  datasource:
+    url: jdbc:sqlite:database/identifier.sqlite
+  jpa:
+    database-platform: org.hibernate.dialect.SQLiteDialect
+    show-sql: true  # 可选：显示生成的 SQL 语句
+    hibernate:
+      ddl-auto: update  # 根据需要选择策略（create, create-drop, validate, none）
+server:
+  port: 8080
