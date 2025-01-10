@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 2025/1/8 20:42
  * @description 书籍控制器
  */
-@RequestMapping("/books")
+@RequestMapping("/api/books")
 @Controller
 public class BookController {
 

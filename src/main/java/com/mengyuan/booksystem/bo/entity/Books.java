@@ -1,14 +1,13 @@
-package com.mengyuan.booksystem.entity;
+package com.mengyuan.booksystem.bo.entity;
 
 import java.io.Serializable;
-
 import java.util.Date;
 
 /**
 * 
-* @TableName logs
+* @TableName books
 */
-public class Logs implements Serializable {
+public class Books implements Serializable {
 
     /**
     * 
@@ -17,15 +16,19 @@ public class Logs implements Serializable {
     /**
     * 
     */
-    private Integer userId;
+    private String title;
     /**
     * 
     */
-    private String action;
+    private String author;
     /**
     * 
     */
-    private Date timestamp;
+    private Integer year;
+    /**
+    * 
+    */
+    private Integer addedBy;
     /**
     * 
     */
@@ -49,22 +52,29 @@ public class Logs implements Serializable {
     /**
     * 
     */
-    private void setUserId(Integer userId){
-    this.userId = userId;
+    private void setTitle(String title){
+    this.title = title;
     }
 
     /**
     * 
     */
-    private void setAction(String action){
-    this.action = action;
+    private void setAuthor(String author){
+    this.author = author;
     }
 
     /**
     * 
     */
-    private void setTimestamp(Date timestamp){
-    this.timestamp = timestamp;
+    private void setYear(Integer year){
+    this.year = year;
+    }
+
+    /**
+    * 
+    */
+    private void setAddedBy(Integer addedBy){
+    this.addedBy = addedBy;
     }
 
     /**
@@ -99,22 +109,29 @@ public class Logs implements Serializable {
     /**
     * 
     */
-    private Integer getUserId(){
-    return this.userId;
+    private String getTitle(){
+    return this.title;
     }
 
     /**
     * 
     */
-    private String getAction(){
-    return this.action;
+    private String getAuthor(){
+    return this.author;
     }
 
     /**
     * 
     */
-    private Date getTimestamp(){
-    return this.timestamp;
+    private Integer getYear(){
+    return this.year;
+    }
+
+    /**
+    * 
+    */
+    private Integer getAddedBy(){
+    return this.addedBy;
     }
 
     /**

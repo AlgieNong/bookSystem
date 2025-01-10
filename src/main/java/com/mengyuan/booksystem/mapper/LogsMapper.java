@@ -1,7 +1,7 @@
 package com.mengyuan.booksystem.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.mengyuan.booksystem.entity.Logs;
+import com.mengyuan.booksystem.bo.entity.Logs;
 
 /**
 * @author 90786

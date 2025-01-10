@@ -1,7 +1,7 @@
 package com.mengyuan.booksystem.iservice;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mengyuan.booksystem.entity.Users;
+import com.mengyuan.booksystem.bo.entity.Users;
 
 /**
 * @author 90786

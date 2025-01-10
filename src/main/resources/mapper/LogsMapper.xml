@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mengyuan.booksystem.mapper.LogsMapper">
 
-    <resultMap id="BaseResultMap" type="com.mengyuan.booksystem.entity.Logs">
+    <resultMap id="BaseResultMap" type="com.mengyuan.booksystem.bo.entity.Logs">
             <id property="id" column="id" jdbcType="INTEGER"/>
             <result property="userId" column="user_id" jdbcType="INTEGER"/>
             <result property="action" column="action" jdbcType="VARCHAR"/>

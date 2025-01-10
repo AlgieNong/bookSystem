@@ -1,7 +1,7 @@
 package com.mengyuan.booksystem.iservice.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.mengyuan.booksystem.entity.Users;
+import com.mengyuan.booksystem.bo.entity.Users;
 import com.mengyuan.booksystem.iservice.UsersService;
 import com.mengyuan.booksystem.mapper.UsersMapper;
 import org.springframework.stereotype.Service;

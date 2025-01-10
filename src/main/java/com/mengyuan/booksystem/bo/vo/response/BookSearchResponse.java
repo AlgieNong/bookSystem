@@ -1,21 +1,20 @@
-package com.mengyuan.booksystem.vo.request;
+package com.mengyuan.booksystem.bo.vo.response;
 
 import lombok.Data;
 
 /**
  * @author ShanMengYuan
- * @date 2025/1/8 20:49
- * @description 图书添加请求体
+ * @date 2025/1/8 20:51
+ * @description 书籍搜索相应类
  */
 @Data
-public class BookAddRequest {
+public class BookSearchResponse {
 
     private String title;
 
     private String author;
 
     private Integer year;
-
 
 
 }

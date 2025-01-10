@@ -3,6 +3,7 @@ package com.mengyuan.booksystem.service.impl;
 import com.mengyuan.booksystem.service.AuthService;
 import com.mengyuan.booksystem.iservice.UsersService;
 import io.swagger.v3.oas.annotations.servers.Server;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  * @author ShanMengYuan
@@ -12,6 +13,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 @Server
 public class AuthServiceImpl implements AuthService {
 
+    @Autowired
     private UsersService userService;
 
     public String login(String username, String password) {

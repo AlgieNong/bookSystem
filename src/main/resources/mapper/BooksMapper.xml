@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mengyuan.booksystem.mapper.BooksMapper">
 
-    <resultMap id="BaseResultMap" type="com.mengyuan.booksystem.entity.Books">
+    <resultMap id="BaseResultMap" type="com.mengyuan.booksystem.bo.entity.Books">
             <id property="id" column="id" jdbcType="INTEGER"/>
             <result property="title" column="title" jdbcType="VARCHAR"/>
             <result property="author" column="author" jdbcType="VARCHAR"/>

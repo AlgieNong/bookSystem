@@ -1,13 +1,15 @@
-package com.mengyuan.booksystem.entity;
+package com.mengyuan.booksystem.bo.entity;
+
 
 import java.io.Serializable;
+
 import java.util.Date;
 
 /**
 * 
-* @TableName books
+* @TableName users
 */
-public class Books implements Serializable {
+public class Users implements Serializable {
 
     /**
     * 
@@ -16,19 +18,11 @@ public class Books implements Serializable {
     /**
     * 
     */
-    private String title;
+    private String username;
     /**
     * 
     */
-    private String author;
-    /**
-    * 
-    */
-    private Integer year;
-    /**
-    * 
-    */
-    private Integer addedBy;
+    private String password;
     /**
     * 
     */
@@ -52,29 +46,15 @@ public class Books implements Serializable {
     /**
     * 
     */
-    private void setTitle(String title){
-    this.title = title;
+    private void setUsername(String username){
+    this.username = username;
     }
 
     /**
     * 
     */
-    private void setAuthor(String author){
-    this.author = author;
-    }
-
-    /**
-    * 
-    */
-    private void setYear(Integer year){
-    this.year = year;
-    }
-
-    /**
-    * 
-    */
-    private void setAddedBy(Integer addedBy){
-    this.addedBy = addedBy;
+    private void setPassword(String password){
+    this.password = password;
     }
 
     /**
@@ -109,29 +89,15 @@ public class Books implements Serializable {
     /**
     * 
     */
-    private String getTitle(){
-    return this.title;
+    private String getUsername(){
+    return this.username;
     }
 
     /**
     * 
     */
-    private String getAuthor(){
-    return this.author;
-    }
-
-    /**
-    * 
-    */
-    private Integer getYear(){
-    return this.year;
-    }
-
-    /**
-    * 
-    */
-    private Integer getAddedBy(){
-    return this.addedBy;
+    private String getPassword(){
+    return this.password;
     }
 
     /**

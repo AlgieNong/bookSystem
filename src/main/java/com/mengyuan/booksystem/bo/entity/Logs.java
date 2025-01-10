@@ -1,5 +1,4 @@
-package com.mengyuan.booksystem.entity;
-
+package com.mengyuan.booksystem.bo.entity;
 
 import java.io.Serializable;
 
@@ -7,9 +6,9 @@ import java.util.Date;
 
 /**
 * 
-* @TableName users
+* @TableName logs
 */
-public class Users implements Serializable {
+public class Logs implements Serializable {
 
     /**
     * 
@@ -18,11 +17,15 @@ public class Users implements Serializable {
     /**
     * 
     */
-    private String username;
+    private Integer userId;
     /**
     * 
     */
-    private String password;
+    private String action;
+    /**
+    * 
+    */
+    private Date timestamp;
     /**
     * 
     */
@@ -46,15 +49,22 @@ public class Users implements Serializable {
     /**
     * 
     */
-    private void setUsername(String username){
-    this.username = username;
+    private void setUserId(Integer userId){
+    this.userId = userId;
     }
 
     /**
     * 
     */
-    private void setPassword(String password){
-    this.password = password;
+    private void setAction(String action){
+    this.action = action;
+    }
+
+    /**
+    * 
+    */
+    private void setTimestamp(Date timestamp){
+    this.timestamp = timestamp;
     }
 
     /**
@@ -89,15 +99,22 @@ public class Users implements Serializable {
     /**
     * 
     */
-    private String getUsername(){
-    return this.username;
+    private Integer getUserId(){
+    return this.userId;
     }
 
     /**
     * 
     */
-    private String getPassword(){
-    return this.password;
+    private String getAction(){
+    return this.action;
+    }
+
+    /**
+    * 
+    */
+    private Date getTimestamp(){
+    return this.timestamp;
     }
 
     /**
