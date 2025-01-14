@@ -1,8 +1,8 @@
 package com.mengyuan.booksystem.controller;
 
 import com.mengyuan.booksystem.bo.base.BaseResponse;
-import com.mengyuan.booksystem.service.AuthService;
 import com.mengyuan.booksystem.bo.vo.request.LoginRequest;
+import com.mengyuan.booksystem.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,17 +23,14 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public BaseResponse login(@RequestBody LoginRequest request){
-
-        return "index";
+    public BaseResponse<String> login(@RequestBody LoginRequest request){
+        return new BaseResponse<>(authService.login(request.getUsername(), request.getPassword()));
     }
 
 
     @PostMapping("/register")
-    public String register(@RequestBody LoginRequest request){
-
-
-        return "index";
+    public BaseResponse<String> register(@RequestBody LoginRequest request){
+        return new BaseResponse<>(authService.register(request.getUsername(), request.getPassword()));
     }
 
 

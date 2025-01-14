@@ -1,5 +1,6 @@
 package com.mengyuan.booksystem.bo.base;
 
+import com.mengyuan.booksystem.exception.ErrorMsg;
 import lombok.Data;
 
 /**
@@ -43,8 +44,14 @@ public class BaseResponse<T> {
         this.data = data;
     }
 
+
     public boolean isSuccess() {
         return SUCCESS_CODE.equals(this.code);
+    }
+
+    public BaseResponse(ErrorMsg errorMsg) {
+        this.code = errorMsg.getCode();
+        this.message = errorMsg.getMsg();
     }
 
 
