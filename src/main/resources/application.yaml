@@ -2,7 +2,7 @@ spring:
   application:
     name: bookSystem
   datasource:
-    url: jdbc:sqlite:database/identifier.sqlite
+    url: jdbc:sqlite:src/main/resources/identifier.sqlite
   jpa:
     database-platform: org.hibernate.dialect.SQLiteDialect
     show-sql: true  # 可选：显示生成的 SQL 语句

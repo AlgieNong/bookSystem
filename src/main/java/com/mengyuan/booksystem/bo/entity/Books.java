@@ -1,158 +1,51 @@
 package com.mengyuan.booksystem.bo.entity;
 
-import java.io.Serializable;
-import java.util.Date;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
-* 
-* @TableName books
-*/
-public class Books implements Serializable {
+ * <p>
+ * 
+ * </p>
+ *
+ * @author shanmengyuan
+ * @since 2025-01-15
+ */
+@Getter
+@Setter
+@TableName("books")
+@ApiModel(value = "Books对象", description = "")
+public class Books {
 
-    /**
-    * 
-    */
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
-    /**
-    * 
-    */
+
+    @TableField("title")
     private String title;
-    /**
-    * 
-    */
+
+    @TableField("author")
     private String author;
-    /**
-    * 
-    */
+
+    @TableField("year")
     private Integer year;
-    /**
-    * 
-    */
+
+    @TableField("added_by")
     private Integer addedBy;
-    /**
-    * 
-    */
-    private Date createdAt;
-    /**
-    * 
-    */
-    private Date updatedAt;
-    /**
-    * 
-    */
+
+    @TableField("created_at")
+    private String createdAt;
+
+    @TableField("updated_at")
+    private String updatedAt;
+
+    @TableField("is_deleted")
+    @TableLogic
     private Integer isDeleted;
-
-    /**
-    * 
-    */
-    private void setId(Integer id){
-    this.id = id;
-    }
-
-    /**
-    * 
-    */
-    private void setTitle(String title){
-    this.title = title;
-    }
-
-    /**
-    * 
-    */
-    private void setAuthor(String author){
-    this.author = author;
-    }
-
-    /**
-    * 
-    */
-    private void setYear(Integer year){
-    this.year = year;
-    }
-
-    /**
-    * 
-    */
-    private void setAddedBy(Integer addedBy){
-    this.addedBy = addedBy;
-    }
-
-    /**
-    * 
-    */
-    private void setCreatedAt(Date createdAt){
-    this.createdAt = createdAt;
-    }
-
-    /**
-    * 
-    */
-    private void setUpdatedAt(Date updatedAt){
-    this.updatedAt = updatedAt;
-    }
-
-    /**
-    * 
-    */
-    private void setIsDeleted(Integer isDeleted){
-    this.isDeleted = isDeleted;
-    }
-
-
-    /**
-    * 
-    */
-    private Integer getId(){
-    return this.id;
-    }
-
-    /**
-    * 
-    */
-    private String getTitle(){
-    return this.title;
-    }
-
-    /**
-    * 
-    */
-    private String getAuthor(){
-    return this.author;
-    }
-
-    /**
-    * 
-    */
-    private Integer getYear(){
-    return this.year;
-    }
-
-    /**
-    * 
-    */
-    private Integer getAddedBy(){
-    return this.addedBy;
-    }
-
-    /**
-    * 
-    */
-    private Date getCreatedAt(){
-    return this.createdAt;
-    }
-
-    /**
-    * 
-    */
-    private Date getUpdatedAt(){
-    return this.updatedAt;
-    }
-
-    /**
-    * 
-    */
-    private Integer getIsDeleted(){
-    return this.isDeleted;
-    }
-
 }

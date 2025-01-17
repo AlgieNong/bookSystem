@@ -1,22 +1,20 @@
 package com.mengyuan.booksystem.iservice.impl;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mengyuan.booksystem.bo.entity.Logs;
-import com.mengyuan.booksystem.iservice.LogsService;
 import com.mengyuan.booksystem.mapper.LogsMapper;
+import com.mengyuan.booksystem.iservice.LogsService;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 /**
-* @author 90786
-* @description 针对表【logs】的数据库操作Service实现
-* @createDate 2025-01-08 17:51:32
-*/
+ * <p>
+ *  服务实现类
+ * </p>
+ *
+ * @author shanmengyuan
+ * @since 2025-01-15
+ */
 @Service
-public class LogsServiceImpl extends ServiceImpl<LogsMapper, Logs>
-    implements LogsService{
+public class LogsServiceImpl extends ServiceImpl<LogsMapper, Logs> implements LogsService {
 
 }
-
-
-
-

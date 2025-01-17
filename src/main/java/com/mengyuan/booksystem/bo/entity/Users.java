@@ -1,124 +1,45 @@
 package com.mengyuan.booksystem.bo.entity;
 
-
-import java.io.Serializable;
-
-import java.util.Date;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
-* 
-* @TableName users
-*/
-public class Users implements Serializable {
+ * <p>
+ * 
+ * </p>
+ *
+ * @author shanmengyuan
+ * @since 2025-01-15
+ */
+@Getter
+@Setter
+@TableName("users")
+@ApiModel(value = "Users对象", description = "")
+public class Users {
 
-    /**
-    * 
-    */
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
-    /**
-    * 
-    */
+
+    @TableField("username")
     private String username;
-    /**
-    * 
-    */
+
+    @TableField("password")
     private String password;
-    /**
-    * 
-    */
-    private Date createdAt;
-    /**
-    * 
-    */
-    private Date updatedAt;
-    /**
-    * 
-    */
+
+    @TableField("created_at")
+    private String createdAt;
+
+    @TableField("updated_at")
+    private String updatedAt;
+
+    @TableField("is_deleted")
+    @TableLogic
     private Integer isDeleted;
-
-    /**
-    * 
-    */
-    private void setId(Integer id){
-    this.id = id;
-    }
-
-    /**
-    * 
-    */
-    private void setUsername(String username){
-    this.username = username;
-    }
-
-    /**
-    * 
-    */
-    private void setPassword(String password){
-    this.password = password;
-    }
-
-    /**
-    * 
-    */
-    private void setCreatedAt(Date createdAt){
-    this.createdAt = createdAt;
-    }
-
-    /**
-    * 
-    */
-    private void setUpdatedAt(Date updatedAt){
-    this.updatedAt = updatedAt;
-    }
-
-    /**
-    * 
-    */
-    private void setIsDeleted(Integer isDeleted){
-    this.isDeleted = isDeleted;
-    }
-
-
-    /**
-    * 
-    */
-    private Integer getId(){
-    return this.id;
-    }
-
-    /**
-    * 
-    */
-    private String getUsername(){
-    return this.username;
-    }
-
-    /**
-    * 
-    */
-    private String getPassword(){
-    return this.password;
-    }
-
-    /**
-    * 
-    */
-    private Date getCreatedAt(){
-    return this.createdAt;
-    }
-
-    /**
-    * 
-    */
-    private Date getUpdatedAt(){
-    return this.updatedAt;
-    }
-
-    /**
-    * 
-    */
-    private Integer getIsDeleted(){
-    return this.isDeleted;
-    }
-
 }

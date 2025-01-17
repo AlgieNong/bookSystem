@@ -1,13 +1,16 @@
 package com.mengyuan.booksystem.iservice;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.mengyuan.booksystem.bo.entity.Books;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
-* @author 90786
-* @description 针对表【books】的数据库操作Service
-* @createDate 2025-01-08 17:51:32
-*/
+ * <p>
+ *  服务类
+ * </p>
+ *
+ * @author shanmengyuan
+ * @since 2025-01-15
+ */
 public interface BooksService extends IService<Books> {
 
 }

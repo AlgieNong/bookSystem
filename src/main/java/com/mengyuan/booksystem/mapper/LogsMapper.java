@@ -1,18 +1,16 @@
 package com.mengyuan.booksystem.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mengyuan.booksystem.bo.entity.Logs;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
-* @author 90786
-* @description 针对表【logs】的数据库操作Mapper
-* @createDate 2025-01-08 17:51:32
-* @Entity com.mengyuan.booksystem.entity.Logs
-*/
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author shanmengyuan
+ * @since 2025-01-15
+ */
 public interface LogsMapper extends BaseMapper<Logs> {
 
 }
-
-
-
-

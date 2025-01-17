@@ -55,5 +55,6 @@
     <!-- 异常日志级别 -->
     <logger name="com.mengyuan.booksystem.exception" level="error" additivity="false">
         <appender-ref ref="EXCEPTION_FILE"/>
+        <appender-ref ref="CONSOLE"/>
     </logger>
 </configuration>

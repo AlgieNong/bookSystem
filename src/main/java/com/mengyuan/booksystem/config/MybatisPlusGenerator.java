@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
+import com.baomidou.mybatisplus.generator.config.OutputFile;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
+
+import java.util.Collections;
 
 /**
  * @author shanmengyuan
@@ -14,7 +17,7 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 public class MybatisPlusGenerator {
 
     public static void main(String[] args) {
-        FastAutoGenerator.create("jdbc:sqlite:database/identifier.sqlite",null,null)
+        FastAutoGenerator.create("jdbc:sqlite:src/main/resources/identifier.sqlite","root","root")
                 .globalConfig(builder -> {
                     builder.author("shanmengyuan")
                             .enableSwagger()
@@ -29,11 +32,11 @@ public class MybatisPlusGenerator {
                             .service("iservice")
                             .serviceImpl("iservice.impl")
                             .mapper("mapper")
-                            .xml("mapper")
+                            .pathInfo(Collections.singletonMap(OutputFile.xml, "D:\\work data\\JavaProject\\bookSystem\\src\\main\\resources\\mapper"))
                             .build();
                 })
                 .strategyConfig(builder -> {
-                    builder.addInclude("Users")
+                    builder.addInclude("Users,Logs,Books")
                             .entityBuilder()
                             .disableSerialVersionUID()
                             .enableLombok()
@@ -43,12 +46,14 @@ public class MybatisPlusGenerator {
                             .idType(IdType.AUTO)
                             .build();
                     builder.serviceBuilder()
+                            .enableFileOverride()
                             .superServiceClass(IService.class)
                             .superServiceImplClass(ServiceImpl.class)
                             .formatServiceFileName("%sService")
                             .formatServiceImplFileName("%sServiceImpl")
                             .build();
                     builder.mapperBuilder()
+                            .enableFileOverride()
                             .superClass(BaseMapper.class)
                             .build();
                 })

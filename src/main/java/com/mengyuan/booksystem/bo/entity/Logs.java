@@ -1,141 +1,48 @@
 package com.mengyuan.booksystem.bo.entity;
 
-import java.io.Serializable;
-
-import java.util.Date;
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.baomidou.mybatisplus.annotation.TableName;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
-* 
-* @TableName logs
-*/
-public class Logs implements Serializable {
+ * <p>
+ * 
+ * </p>
+ *
+ * @author shanmengyuan
+ * @since 2025-01-15
+ */
+@Getter
+@Setter
+@TableName("logs")
+@ApiModel(value = "Logs对象", description = "")
+public class Logs {
 
-    /**
-    * 
-    */
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
-    /**
-    * 
-    */
+
+    @TableField("user_id")
     private Integer userId;
-    /**
-    * 
-    */
+
+    @TableField("action")
     private String action;
-    /**
-    * 
-    */
-    private Date timestamp;
-    /**
-    * 
-    */
-    private Date createdAt;
-    /**
-    * 
-    */
-    private Date updatedAt;
-    /**
-    * 
-    */
+
+    @TableField("timestamp")
+    private String timestamp;
+
+    @TableField("created_at")
+    private String createdAt;
+
+    @TableField("updated_at")
+    private String updatedAt;
+
+    @TableField("is_deleted")
+    @TableLogic
     private Integer isDeleted;
-
-    /**
-    * 
-    */
-    private void setId(Integer id){
-    this.id = id;
-    }
-
-    /**
-    * 
-    */
-    private void setUserId(Integer userId){
-    this.userId = userId;
-    }
-
-    /**
-    * 
-    */
-    private void setAction(String action){
-    this.action = action;
-    }
-
-    /**
-    * 
-    */
-    private void setTimestamp(Date timestamp){
-    this.timestamp = timestamp;
-    }
-
-    /**
-    * 
-    */
-    private void setCreatedAt(Date createdAt){
-    this.createdAt = createdAt;
-    }
-
-    /**
-    * 
-    */
-    private void setUpdatedAt(Date updatedAt){
-    this.updatedAt = updatedAt;
-    }
-
-    /**
-    * 
-    */
-    private void setIsDeleted(Integer isDeleted){
-    this.isDeleted = isDeleted;
-    }
-
-
-    /**
-    * 
-    */
-    private Integer getId(){
-    return this.id;
-    }
-
-    /**
-    * 
-    */
-    private Integer getUserId(){
-    return this.userId;
-    }
-
-    /**
-    * 
-    */
-    private String getAction(){
-    return this.action;
-    }
-
-    /**
-    * 
-    */
-    private Date getTimestamp(){
-    return this.timestamp;
-    }
-
-    /**
-    * 
-    */
-    private Date getCreatedAt(){
-    return this.createdAt;
-    }
-
-    /**
-    * 
-    */
-    private Date getUpdatedAt(){
-    return this.updatedAt;
-    }
-
-    /**
-    * 
-    */
-    private Integer getIsDeleted(){
-    return this.isDeleted;
-    }
-
 }

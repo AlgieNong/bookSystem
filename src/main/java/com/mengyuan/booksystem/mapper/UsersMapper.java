@@ -1,18 +1,16 @@
 package com.mengyuan.booksystem.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mengyuan.booksystem.bo.entity.Users;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
-* @author 90786
-* @description 针对表【users】的数据库操作Mapper
-* @createDate 2025-01-08 17:51:32
-* @Entity com.mengyuan.booksystem.entity.Users
-*/
+ * <p>
+ *  Mapper 接口
+ * </p>
+ *
+ * @author shanmengyuan
+ * @since 2025-01-15
+ */
 public interface UsersMapper extends BaseMapper<Users> {
 
 }
-
-
-
-
