@@ -1,9 +1,11 @@
 package com.mengyuan.booksystem.service;
 
+import com.mengyuan.booksystem.bo.base.BaseResponse;
+
 public interface AuthService {
 
-    String login(String username, String password);
+    BaseResponse<String> login(String username, String password);
 
-    String register(String username, String password);
+    BaseResponse<String> register(String username, String password);
 
 }

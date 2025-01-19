@@ -17,4 +17,9 @@ public class BookSearchResponse {
     private Integer year;
 
 
+    public BookSearchResponse(String title, String author, Integer year) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+    }
 }

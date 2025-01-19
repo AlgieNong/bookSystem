@@ -42,4 +42,9 @@ public class Users {
     @TableField("is_deleted")
     @TableLogic
     private Integer isDeleted;
+
+    public Users(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }

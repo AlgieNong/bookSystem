@@ -1,7 +1,7 @@
 package com.mengyuan.booksystem.service;
 
-import java.util.List;
-
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.mengyuan.booksystem.bo.base.BaseResponse;
 import com.mengyuan.booksystem.bo.vo.request.BookAddRequest;
 import com.mengyuan.booksystem.bo.vo.response.BookSearchResponse;
 
@@ -11,8 +11,8 @@ import com.mengyuan.booksystem.bo.vo.response.BookSearchResponse;
  */
 public interface BookManagementService {
 
-    Integer add(BookAddRequest request);
+    BaseResponse<Integer> add(BookAddRequest request);
 
-    List<BookSearchResponse> search(String bookName);
+    BaseResponse<Page<BookSearchResponse>> search(String bookName, Integer currentPage, Integer pageSize);
 
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author ShanMengYuan
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @description 授权登录控制器
  */
 @RequestMapping("/auth")
-@Controller
+@RestController
 public class AuthController {
 
     @Autowired
@@ -24,13 +25,13 @@ public class AuthController {
 
     @PostMapping("/login")
     public BaseResponse<String> login(@RequestBody LoginRequest request){
-        return new BaseResponse<>(authService.login(request.getUsername(), request.getPassword()));
+        return authService.login(request.getUsername(), request.getPassword());
     }
 
 
     @PostMapping("/register")
     public BaseResponse<String> register(@RequestBody LoginRequest request){
-        return new BaseResponse<>(authService.register(request.getUsername(), request.getPassword()));
+        return authService.register(request.getUsername(), request.getPassword());
     }
 
 

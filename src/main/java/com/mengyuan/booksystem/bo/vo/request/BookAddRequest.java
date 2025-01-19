@@ -1,6 +1,8 @@
 package com.mengyuan.booksystem.bo.vo.request;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
 
 /**
  * @author ShanMengYuan
@@ -10,10 +12,14 @@ import lombok.Data;
 @Data
 public class BookAddRequest {
 
+    @ApiModelProperty(value = "书名",required = true)
     private String title;
 
+    @ApiModelProperty(value = "作者",required = true)
     private String author;
 
+    @Length(min = 4,max = 4)
+    @ApiModelProperty(value = "出版年份",required = true)
     private Integer year;
 
 

@@ -173,7 +173,7 @@
 <script>
     async function fetchData(url, method = 'GET', body = null) {
         try {
-            const response = await fetch(url, {
+            const response = await fetch('http://localhost:8080'+url, {
                 method,
                 headers: {
                     'Content-Type': 'application/json',
@@ -181,12 +181,13 @@
                 body: body ? JSON.stringify(body) : null,
             });
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || '请求失败');
+            const result = await response.json();
+
+            if (result.code !== 0) {
+                throw new Error(result.message || '请求失败');
             }
 
-            return await response.json();
+            return result.data || result;
         } catch (error) {
             showError(error.message);
             return null;
@@ -202,7 +203,7 @@
     async function login() {
         const username = document.querySelector('#username').value;
         const password = document.querySelector('#password').value;
-        const result = await fetchData('/api/login', 'POST', { username, password });
+        const result = await fetchData('/auth/login', 'POST', { username, password });
 
         if (result) {
             window.location.href = '/main';
@@ -212,7 +213,7 @@
     async function register() {
         const username = document.querySelector('#username').value;
         const password = document.querySelector('#password').value;
-        const result = await fetchData('/api/register', 'POST', { username, password });
+        const result = await fetchData('/auth/register', 'POST', { username, password });
 
         if (result) {
             alert('注册成功，请登录');

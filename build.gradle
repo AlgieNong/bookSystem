@@ -42,11 +42,12 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf:3.4.1'
     implementation 'com.baomidou:mybatis-plus-boot-starter:3.5.9'
     implementation 'com.baomidou:mybatis-plus-generator:3.5.9'
+    implementation 'com.baomidou:mybatis-plus-jsqlparser:3.5.9'
     implementation 'org.freemarker:freemarker:2.3.31'
     implementation 'org.hibernate.validator:hibernate-validator:8.0.2.Final'
     implementation 'io.springfox:springfox-swagger2:3.0.0'
     implementation 'org.springframework.boot:spring-boot-starter-validation:3.4.1'
-
+    implementation 'com.alibaba.fastjson2:fastjson2:2.0.54'
 
 }
 
